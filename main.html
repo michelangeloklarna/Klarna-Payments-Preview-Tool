@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Updated title for the tool -->
+  <title>Klarna Payments Preview Tool</title>
+  
+  <!-- Link external CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Windows 95 title bar -->
+    <div class="title-bar">
+      <div class="title-bar-text">
+        <div class="title-bar-icon">
+          <img src="assets/images/klarna_logo.png" alt="Klarna" />
+        </div>
+        Klarna Payments Preview Tool
+      </div>
+      <div class="title-bar-controls">
+        <button class="title-bar-button minimize"></button>
+        <button class="title-bar-button maximize"></button>
+        <button class="title-bar-button close"></button>
+      </div>
+    </div>
+
+    <!-- Window content -->
+    <div class="window-content">
+      <div class="container">
+        <!-- Initialize Klarna Payments section -->
+        <!-- All existing HTML content remains unchanged -->
+        <div class="item">
+          <h3>init</h3>
+          client_token: 
+          <textarea id="client-token" style="min-height: 8rem;"></textarea>
+          <button type="button" id="init">init</button>
+        </div>
+        <div class="item">
+          <h3>request</h3>
+          <div class="request-container">
+            <div class="sdk-operation">Klarna.Payments.init(options)</div>
+            <pre id="init-request" class="request-content"></pre>
+          </div>
+          <h3>response</h3>
+          <div class="request-container">
+            <div class="sdk-operation">Response</div>
+            <pre id="init-results" class="request-content"></pre>
+          </div>
+        </div>
+        <div class="item">
+          <h3>notes</h3>
+          Pass the client_token from the Create Session response. <a href="https://docs.klarna.com/payments/web-payments/integrate-with-klarna-payments/step-2-checkout/" target="_blank" style="color: #000080;">More info</a>.
+        </div>
+    
+        <!-- Load payment methods section -->
+        <div class="item">
+          <h3>load</h3>
+          payment_method_category (optional): 
+          <input type="text" id="load-payment-method-category"></textarea>
+          session data (optional):
+          <textarea id="optional-load-session-data" style="min-height: 8rem;"></textarea>
+          <button type="button" id="load">load</button>
+        </div>
+        <div class="item">
+          <h3>request</h3>
+          <div class="request-container">
+            <div class="sdk-operation">Klarna.Payments.load(options, session_data, callback)</div>
+            <pre id="load-request" class="request-content"></pre>
+          </div>
+          <h3>response</h3>
+          <div class="request-container">
+            <div class="sdk-operation">Response</div>
+            <pre id="load-results" class="request-content"></pre>
+          </div>
+        </div>
+        <div class="item">
+          <h3>notes</h3>
+          Optional, category example:
+          pay_over_time, pay_later, pay_now
+        </div>
+    
+        <!-- Move Klarna payments container here -->
+        <div class="item" style="grid-column: 1 / -1;">
+          <h3>klarna-payments-container:</h3>
+          <div id="klarna-payments-container"></div>
+        </div>
+    
+        <!-- Authorization section with examples -->
+        <div class="item">
+          <h3>authorize</h3>
+          payment_method_category (optional):
+          <input type="text" id="authorize-payment-method-category"></textarea>
+          session data (optional):
+          <textarea id="optional-authorize-session-data" style="min-height: 8rem;"></textarea>
+          <button type="button" id="authorize">authorize</button>
+        </div>
+        <div class="item">
+          <h3>request</h3>
+          <div class="request-container">
+            <div class="sdk-operation">Klarna.Payments.authorize(options, session_data, callback)</div>
+            <pre id="authorize-request" class="request-content"></pre>
+          </div>
+          <h3>response</h3>
+          <div class="request-container">
+            <div class="sdk-operation">Response</div>
+            <pre id="authorize-results" class="request-content"></pre>
+          </div>
+        </div>
+        <div class="item">
+          <h3>notes</h3>
+          category: should be the same as in load according to docs<br />
+          <h3>session data examples:</h3>
+          <div class="example-buttons">
+            <button class="example-button active" data-country="IT">IT</button>
+            <button class="example-button" data-country="US">US</button>
+            <button class="example-button" data-country="GB">GB</button>
+            <button class="example-button" data-country="SE">SE</button>
+            <button class="example-button" data-country="DE">DE</button>
+            <button class="example-button" data-country="ES">ES</button>
+            <button class="example-button" data-country="FR">FR</button>
+          </div>
+          <div class="code-container">
+            <div class="code-header">
+              <button id="copyButton" class="copy-button">Copy</button>
+            </div>
+            <div class="code-content">
+              <div class="line-numbers"></div>
+              <pre id="auth-data-example"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stat-counter">
+        <a href="https://www.freecounterstat.com" title="hit counter">
+          <img src="https://counter6.optistats.ovh/private/freecounterstat.php?c=1t8983zz8nzejxnq9lf3qh4tg4ug4d64" border="0" title="hit counter" alt="hit counter">
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Load external JavaScript -->
+  <script src="assets/js/script.js"></script>
+  
+  <!-- Load Klarna Payments API -->
+  <script src="https://x.klarnacdn.net/kp/lib/v1/api.js" async></script>
+</body>
+</html>
